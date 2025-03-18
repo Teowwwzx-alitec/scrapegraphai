@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+virtualenv/
+
+# Playwright specific
+**/playwright/driver/
+**/playwright-downloads/
+**/browser-downloads/
+**/site-packages/
+
+# Project specific
+output/
+captures/
+odoo_knowledge/
+trash/
+**/screenshots/
+**/recordings/
+**/structure/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
