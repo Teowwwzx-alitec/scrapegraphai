@@ -1,5 +1,16 @@
-python-dotenv==1.0.0
-playwright==1.41.2
-langchain==0.1.0
-scrapegraphai
-openrouter>=1.0
+# Core - Browser Automation
+python-dotenv==1.0.1
+playwright==1.43.0
+
+# AI APIs (direct usage)
+openai==1.66.3
+scrapegraphai==1.43.0
+openrouter==1.0.0
+
+# Utils
+aiohttp==3.11.14
+PyYAML==6.0.1
+
+# Testing
+pytest==8.0.0
+pytest-asyncio==0.23.5

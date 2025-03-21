@@ -1,0 +1,618 @@
+Element 1:
+<html><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Odoo - Inventory Overview</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico">
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "bf2e702b87e3978eab832f3f9459f1ddf2571131o1774092620",
+                debug: "",
+            };
+        </script>
+        
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+                <meta name="theme-color" content="#71639e">
+                <link rel="manifest" href="/web/manifest.webmanifest" crossorigin="use-credentials">
+                <link rel="apple-touch-icon" href="/web/static/img/odoo-icon-ios.png">
+                <script type="text/javascript">
+                    // Block to avoid leaking variables in the script scope
+                    {
+                        odoo.__session_info__ = {"uid": 2, "is_system": true, "is_admin": true, "is_public": false, "is_internal_user": true, "user_context": {"lang": "en_US", "tz": "Asia/Singapore", "uid": 2}, "db": "odoo17_db", "user_settings": {"id": 1, "user_id": {"id": 2}, "is_discuss_sidebar_category_channel_open": true, "is_discuss_sidebar_category_chat_open": true, "push_to_talk_key": false, "use_push_to_talk": false, "voice_active_duration": 200, "volume_settings_ids": [["ADD", []]]}, "server_version": "17.0-20250207", "server_version_info": [17, 0, 0, "final", 0, ""], "support_url": "https://www.odoo.com/buy", "name": "Administrator", "username": "zhenxiang.teow@alitec.asia", "partner_display_name": "Administrator", "partner_id": 3, "web.base.url": "http://localhost:8070", "active_ids_limit": 20000, "profile_session": null, "profile_collectors": null, "profile_params": null, "max_file_upload_size": 134217728, "home_action_id": false, "cache_hashes": {"translations": "7521c29caf06e132fb672d6bf146150eef97c1d0", "load_menus": "f1528436909f94e825722c82831c97762f35790da8b33c4ce7e3688735d73a48"}, "currencies": {"34": {"symbol": "RM", "position": "before", "digits": [69, 2]}, "1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "user_companies": {"current_company": 1, "allowed_companies": {"1": {"id": 1, "name": "My Company", "sequence": 0, "child_ids": [], "parent_id": false}}, "disallowed_ancestor_companies": {}}, "show_effect": true, "display_switch_company_menu": false, "user_id": [2], "max_time_between_keys_in_ms": 100, "websocket_worker_version": "17.0-1", "web_tours": [], "tour_disable": false, "notification_type": "email", "odoobot_initialized": true, "iap_company_enrich": false, "is_quick_edit_mode_enabled": false};
+                        const { user_context,  cache_hashes } = odoo.__session_info__;
+                        const lang = new URLSearchParams(document.location.search).get("lang");
+                        let menuURL = `/web/webclient/load_menus/${cache_hashes.load_menus}`;
+                        if (lang) {
+                            user_context.lang = lang;
+                            menuURL += `?lang=${lang}`
+                        }
+                        odoo.reloadMenus = () => fetch(menuURL).then(res => res.json());
+                        odoo.loadMenusPromise = odoo.reloadMenus();
+                        // Prefetch translations to speedup webclient. This is done in JS because link rel="prefetch"
+                        // is not yet supported on safari.
+                        fetch(`/web/webclient/translations/${cache_hashes.translations}?lang=${user_context.lang}`);
+                    }
+                </script>
+                    <link type="text/css" rel="stylesheet" href="/web/assets/fd0436c/web.assets_web.min.css">
+        <script type="text/javascript" src="/web/assets/c2495ae/web.assets_web.min.js" onerror="__odooAssetError=1"></script>
+            
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.2.2/introjs.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.2.2/intro.min.js"></script></head>
+    <body class="o_web_client">
+        
+        
+    
+<header class="o_navbar"><nav class="o_main_navbar" data-command-category="disabled"><div class="o-dropdown dropdown o_navbar_apps_menu o-dropdown--no-caret"><button type="button" class="dropdown-toggle" title="Home Menu" data-hotkey="h" tabindex="0" aria-expanded="false"><i class="oi oi-apps"></i></button></div><a class="dropdown-item o_menu_brand d-none d-md-flex" role="menuitem" tabindex="0" href="#menu_id=181&amp;action=370" data-menu-xmlid="stock.menu_stock_root" data-section="181">Inventory</a><div class="o_menu_sections d-none d-md-flex flex-grow-1 flex-shrink-1 w-0" role="menu"><a class="dropdown-item o_nav_entry" role="menuitem" tabindex="0" href="#menu_id=211&amp;action=370" data-hotkey="1" data-menu-xmlid="stock.stock_picking_type_menu" data-section="211">Overview</a><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="2" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_warehouse_mgmt"><span data-section="182">Operations</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="3" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_inventory_control"><span data-section="196">Products</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="4" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_warehouse_report"><span data-section="197">Reporting</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="5" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_config_settings"><span data-section="186">Configuration</span></button></div></div><div class="o_menu_systray d-flex flex-shrink-0 ms-auto" role="menu"><div></div><div class="dropdown"></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-comments" role="img" aria-label="Messages"></i><span class="o-mail-MessagingMenu-counter badge rounded-pill">2</span></button></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-clock-o" role="img" aria-label="Activities"></i></button></div><div></div><div></div><div><button class="o_mobile_menu_toggle o_nav_entry o-no-caret d-md-none border-0 pe-3" title="Toggle menu" aria-label="Toggle menu"><i class="oi oi-panel-right"></i></button></div><div></div><div class="o-dropdown dropdown o_user_menu d-none d-md-block pe-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle py-1 py-lg-0" tabindex="0" aria-expanded="false"><img class="o_avatar o_user_avatar rounded" alt="User" src="http://localhost:8070/web/image?model=res.users&amp;field=avatar_128&amp;id=2"><small class="oe_topbar_name d-none ms-2 text-start smaller lh-1 text-truncate" style="max-width: 200px">Administrator<mark class="d-block font-monospace text-truncate"><i class="fa fa-database oi-small me-1"></i>odoo17_db</mark></small></button></div></div></nav></header><div class="o_action_manager"><div class="o_kanban_view o_kanban_dashboard o_emphasize_colors o_view_controller o_action"><div class="o_control_panel d-flex flex-column gap-3 gap-lg-1 px-3 pt-2 pb-3" data-command-category="actions"><div class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-lg-start gap-3 flex-grow-1"><div class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100"><div class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none"><div class="d-xl-none o_control_panel_collapsed_create"><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button><ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul></div><div class="d-none d-xl-inline-flex gap-1"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></div></div><div class="o_breadcrumb d-flex gap-1 text-truncate"><div class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"><span class="min-w-0 text-truncate">Inventory Overview</span></div><div class="o_control_panel_breadcrumbs_actions d-inline-flex"></div></div><span class="d-none d-xl-block me-auto"></span></div><div class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 mw-100 w-lg-auto"><div class="o_cp_searchview d-flex input-group" role="search"><div class="o_searchview form-control d-print-contents d-flex align-items-center py-1" role="search" aria-autocomplete="list"><i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i><div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button></div></div></div><div class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-3 gap-lg-1 gap-xl-3 order-1 order-lg-2 flex-grow-1"><div class="o_cp_pager text-nowrap " role="search"><nav class="o_pager d-flex gap-2 h-100" aria-label="Pager"><span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span><span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span></nav></div></div></div></div><div class="o_content"><div class="o_kanban_renderer o_renderer d-flex o_kanban_ungrouped align-content-start flex-wrap justify-content-start"><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_2" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_3" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div></div></div></div></div><div class="o-main-components-container"><div class="o-mail-ChatWindowContainer"></div><div class="o-overlay-container"></div><div></div><div class="o_notification_manager o_upload_progress_toast"></div><div class="o_notification_manager"></div></div><div class="introjsFloatingElement introjs-showElement"></div><div class="introjs-overlay" style="inset: 0px; position: fixed; cursor: pointer;"></div><div class="introjs-helperLayer" style="box-shadow: rgba(33, 33, 33, 0.8) 0px 0px 1px 2px, rgba(33, 33, 33, 0.5) 0px 0px 0px 5000px; width: 0px; height: 0px; top: 360px; left: 640px; opacity: 1;"></div><div class="introjs-tooltipReferenceLayer" style="width: 0px; height: 0px; top: 360px; left: 640px;"><div class="introjs-tooltip introjs-floating" role="dialog" style="left: 50%; top: 50%; margin-left: -125px; margin-top: -104.5px;"><div class="introjs-tooltip-header"><h1 class="introjs-tooltip-title"></h1><a class="introjs-skipbutton" role="button" tabindex="0">×</a></div><div class="introjs-tooltiptext">Welcome to the Odoo Inventory page!</div><div class="introjs-bullets"><ul role="tablist"><li role="presentation"><a role="button" class="active" tabindex="0" data-stepnumber="1">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="2">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="3">&nbsp;</a></li></ul></div><div class="introjs-progress" style="display: none;"><div class="introjs-progressbar" role="progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33.33333333333333" style="width: 33.3333%;"></div></div><div class="introjs-arrow" style="display: none;"></div><div class="introjs-tooltipbuttons"><a role="button" tabindex="0" class="introjs-button introjs-prevbutton introjs-disabled">Back</a><a role="button" tabindex="0" class="introjs-button introjs-nextbutton">Next</a></div></div></div></body></html>
+==================================================
+Element 2:
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Odoo - Inventory Overview</title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico">
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "bf2e702b87e3978eab832f3f9459f1ddf2571131o1774092620",
+                debug: "",
+            };
+        </script>
+        
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+                <meta name="theme-color" content="#71639e">
+                <link rel="manifest" href="/web/manifest.webmanifest" crossorigin="use-credentials">
+                <link rel="apple-touch-icon" href="/web/static/img/odoo-icon-ios.png">
+                <script type="text/javascript">
+                    // Block to avoid leaking variables in the script scope
+                    {
+                        odoo.__session_info__ = {"uid": 2, "is_system": true, "is_admin": true, "is_public": false, "is_internal_user": true, "user_context": {"lang": "en_US", "tz": "Asia/Singapore", "uid": 2}, "db": "odoo17_db", "user_settings": {"id": 1, "user_id": {"id": 2}, "is_discuss_sidebar_category_channel_open": true, "is_discuss_sidebar_category_chat_open": true, "push_to_talk_key": false, "use_push_to_talk": false, "voice_active_duration": 200, "volume_settings_ids": [["ADD", []]]}, "server_version": "17.0-20250207", "server_version_info": [17, 0, 0, "final", 0, ""], "support_url": "https://www.odoo.com/buy", "name": "Administrator", "username": "zhenxiang.teow@alitec.asia", "partner_display_name": "Administrator", "partner_id": 3, "web.base.url": "http://localhost:8070", "active_ids_limit": 20000, "profile_session": null, "profile_collectors": null, "profile_params": null, "max_file_upload_size": 134217728, "home_action_id": false, "cache_hashes": {"translations": "7521c29caf06e132fb672d6bf146150eef97c1d0", "load_menus": "f1528436909f94e825722c82831c97762f35790da8b33c4ce7e3688735d73a48"}, "currencies": {"34": {"symbol": "RM", "position": "before", "digits": [69, 2]}, "1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "user_companies": {"current_company": 1, "allowed_companies": {"1": {"id": 1, "name": "My Company", "sequence": 0, "child_ids": [], "parent_id": false}}, "disallowed_ancestor_companies": {}}, "show_effect": true, "display_switch_company_menu": false, "user_id": [2], "max_time_between_keys_in_ms": 100, "websocket_worker_version": "17.0-1", "web_tours": [], "tour_disable": false, "notification_type": "email", "odoobot_initialized": true, "iap_company_enrich": false, "is_quick_edit_mode_enabled": false};
+                        const { user_context,  cache_hashes } = odoo.__session_info__;
+                        const lang = new URLSearchParams(document.location.search).get("lang");
+                        let menuURL = `/web/webclient/load_menus/${cache_hashes.load_menus}`;
+                        if (lang) {
+                            user_context.lang = lang;
+                            menuURL += `?lang=${lang}`
+                        }
+                        odoo.reloadMenus = () => fetch(menuURL).then(res => res.json());
+                        odoo.loadMenusPromise = odoo.reloadMenus();
+                        // Prefetch translations to speedup webclient. This is done in JS because link rel="prefetch"
+                        // is not yet supported on safari.
+                        fetch(`/web/webclient/translations/${cache_hashes.translations}?lang=${user_context.lang}`);
+                    }
+                </script>
+                    <link type="text/css" rel="stylesheet" href="/web/assets/fd0436c/web.assets_web.min.css">
+        <script type="text/javascript" src="/web/assets/c2495ae/web.assets_web.min.js" onerror="__odooAssetError=1"></script>
+            
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.2.2/introjs.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.2.2/intro.min.js"></script></head>
+==================================================
+Element 3:
+<meta charset="utf-8">
+==================================================
+Element 4:
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+==================================================
+Element 5:
+<title>Odoo - Inventory Overview</title>
+==================================================
+Element 6:
+<link type="image/x-icon" rel="shortcut icon" href="/web/static/img/favicon.ico">
+==================================================
+Element 7:
+<script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "bf2e702b87e3978eab832f3f9459f1ddf2571131o1774092620",
+                debug: "",
+            };
+        </script>
+==================================================
+Element 8:
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+==================================================
+Element 9:
+<meta name="theme-color" content="#71639e">
+==================================================
+Element 10:
+<link rel="manifest" href="/web/manifest.webmanifest" crossorigin="use-credentials">
+==================================================
+Element 11:
+<link rel="apple-touch-icon" href="/web/static/img/odoo-icon-ios.png">
+==================================================
+Element 12:
+<script type="text/javascript">
+                    // Block to avoid leaking variables in the script scope
+                    {
+                        odoo.__session_info__ = {"uid": 2, "is_system": true, "is_admin": true, "is_public": false, "is_internal_user": true, "user_context": {"lang": "en_US", "tz": "Asia/Singapore", "uid": 2}, "db": "odoo17_db", "user_settings": {"id": 1, "user_id": {"id": 2}, "is_discuss_sidebar_category_channel_open": true, "is_discuss_sidebar_category_chat_open": true, "push_to_talk_key": false, "use_push_to_talk": false, "voice_active_duration": 200, "volume_settings_ids": [["ADD", []]]}, "server_version": "17.0-20250207", "server_version_info": [17, 0, 0, "final", 0, ""], "support_url": "https://www.odoo.com/buy", "name": "Administrator", "username": "zhenxiang.teow@alitec.asia", "partner_display_name": "Administrator", "partner_id": 3, "web.base.url": "http://localhost:8070", "active_ids_limit": 20000, "profile_session": null, "profile_collectors": null, "profile_params": null, "max_file_upload_size": 134217728, "home_action_id": false, "cache_hashes": {"translations": "7521c29caf06e132fb672d6bf146150eef97c1d0", "load_menus": "f1528436909f94e825722c82831c97762f35790da8b33c4ce7e3688735d73a48"}, "currencies": {"34": {"symbol": "RM", "position": "before", "digits": [69, 2]}, "1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US"}, "user_companies": {"current_company": 1, "allowed_companies": {"1": {"id": 1, "name": "My Company", "sequence": 0, "child_ids": [], "parent_id": false}}, "disallowed_ancestor_companies": {}}, "show_effect": true, "display_switch_company_menu": false, "user_id": [2], "max_time_between_keys_in_ms": 100, "websocket_worker_version": "17.0-1", "web_tours": [], "tour_disable": false, "notification_type": "email", "odoobot_initialized": true, "iap_company_enrich": false, "is_quick_edit_mode_enabled": false};
+                        const { user_context,  cache_hashes } = odoo.__session_info__;
+                        const lang = new URLSearchParams(document.location.search).get("lang");
+                        let menuURL = `/web/webclient/load_menus/${cache_hashes.load_menus}`;
+                        if (lang) {
+                            user_context.lang = lang;
+                            menuURL += `?lang=${lang}`
+                        }
+                        odoo.reloadMenus = () => fetch(menuURL).then(res => res.json());
+                        odoo.loadMenusPromise = odoo.reloadMenus();
+                        // Prefetch translations to speedup webclient. This is done in JS because link rel="prefetch"
+                        // is not yet supported on safari.
+                        fetch(`/web/webclient/translations/${cache_hashes.translations}?lang=${user_context.lang}`);
+                    }
+                </script>
+==================================================
+Element 13:
+<link type="text/css" rel="stylesheet" href="/web/assets/fd0436c/web.assets_web.min.css">
+==================================================
+Element 14:
+<script type="text/javascript" src="/web/assets/c2495ae/web.assets_web.min.js" onerror="__odooAssetError=1"></script>
+==================================================
+Element 15:
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.2.2/introjs.min.css">
+==================================================
+Element 16:
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.2.2/intro.min.js"></script>
+==================================================
+Element 17:
+<body class="o_web_client">
+        
+        
+    
+<header class="o_navbar"><nav class="o_main_navbar" data-command-category="disabled"><div class="o-dropdown dropdown o_navbar_apps_menu o-dropdown--no-caret"><button type="button" class="dropdown-toggle" title="Home Menu" data-hotkey="h" tabindex="0" aria-expanded="false"><i class="oi oi-apps"></i></button></div><a class="dropdown-item o_menu_brand d-none d-md-flex" role="menuitem" tabindex="0" href="#menu_id=181&amp;action=370" data-menu-xmlid="stock.menu_stock_root" data-section="181">Inventory</a><div class="o_menu_sections d-none d-md-flex flex-grow-1 flex-shrink-1 w-0" role="menu"><a class="dropdown-item o_nav_entry" role="menuitem" tabindex="0" href="#menu_id=211&amp;action=370" data-hotkey="1" data-menu-xmlid="stock.stock_picking_type_menu" data-section="211">Overview</a><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="2" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_warehouse_mgmt"><span data-section="182">Operations</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="3" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_inventory_control"><span data-section="196">Products</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="4" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_warehouse_report"><span data-section="197">Reporting</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="5" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_config_settings"><span data-section="186">Configuration</span></button></div></div><div class="o_menu_systray d-flex flex-shrink-0 ms-auto" role="menu"><div></div><div class="dropdown"></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-comments" role="img" aria-label="Messages"></i><span class="o-mail-MessagingMenu-counter badge rounded-pill">2</span></button></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-clock-o" role="img" aria-label="Activities"></i></button></div><div></div><div></div><div><button class="o_mobile_menu_toggle o_nav_entry o-no-caret d-md-none border-0 pe-3" title="Toggle menu" aria-label="Toggle menu"><i class="oi oi-panel-right"></i></button></div><div></div><div class="o-dropdown dropdown o_user_menu d-none d-md-block pe-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle py-1 py-lg-0" tabindex="0" aria-expanded="false"><img class="o_avatar o_user_avatar rounded" alt="User" src="http://localhost:8070/web/image?model=res.users&amp;field=avatar_128&amp;id=2"><small class="oe_topbar_name d-none ms-2 text-start smaller lh-1 text-truncate" style="max-width: 200px">Administrator<mark class="d-block font-monospace text-truncate"><i class="fa fa-database oi-small me-1"></i>odoo17_db</mark></small></button></div></div></nav></header><div class="o_action_manager"><div class="o_kanban_view o_kanban_dashboard o_emphasize_colors o_view_controller o_action"><div class="o_control_panel d-flex flex-column gap-3 gap-lg-1 px-3 pt-2 pb-3" data-command-category="actions"><div class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-lg-start gap-3 flex-grow-1"><div class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100"><div class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none"><div class="d-xl-none o_control_panel_collapsed_create"><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button><ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul></div><div class="d-none d-xl-inline-flex gap-1"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></div></div><div class="o_breadcrumb d-flex gap-1 text-truncate"><div class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"><span class="min-w-0 text-truncate">Inventory Overview</span></div><div class="o_control_panel_breadcrumbs_actions d-inline-flex"></div></div><span class="d-none d-xl-block me-auto"></span></div><div class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 mw-100 w-lg-auto"><div class="o_cp_searchview d-flex input-group" role="search"><div class="o_searchview form-control d-print-contents d-flex align-items-center py-1" role="search" aria-autocomplete="list"><i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i><div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button></div></div></div><div class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-3 gap-lg-1 gap-xl-3 order-1 order-lg-2 flex-grow-1"><div class="o_cp_pager text-nowrap " role="search"><nav class="o_pager d-flex gap-2 h-100" aria-label="Pager"><span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span><span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span></nav></div></div></div></div><div class="o_content"><div class="o_kanban_renderer o_renderer d-flex o_kanban_ungrouped align-content-start flex-wrap justify-content-start"><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_2" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_3" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div></div></div></div></div><div class="o-main-components-container"><div class="o-mail-ChatWindowContainer"></div><div class="o-overlay-container"></div><div></div><div class="o_notification_manager o_upload_progress_toast"></div><div class="o_notification_manager"></div></div><div class="introjsFloatingElement introjs-showElement"></div><div class="introjs-overlay" style="inset: 0px; position: fixed; cursor: pointer;"></div><div class="introjs-helperLayer" style="box-shadow: rgba(33, 33, 33, 0.8) 0px 0px 1px 2px, rgba(33, 33, 33, 0.5) 0px 0px 0px 5000px; width: 0px; height: 0px; top: 360px; left: 640px; opacity: 1;"></div><div class="introjs-tooltipReferenceLayer" style="width: 0px; height: 0px; top: 360px; left: 640px;"><div class="introjs-tooltip introjs-floating" role="dialog" style="left: 50%; top: 50%; margin-left: -125px; margin-top: -104.5px;"><div class="introjs-tooltip-header"><h1 class="introjs-tooltip-title"></h1><a class="introjs-skipbutton" role="button" tabindex="0">×</a></div><div class="introjs-tooltiptext">Welcome to the Odoo Inventory page!</div><div class="introjs-bullets"><ul role="tablist"><li role="presentation"><a role="button" class="active" tabindex="0" data-stepnumber="1">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="2">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="3">&nbsp;</a></li></ul></div><div class="introjs-progress" style="display: none;"><div class="introjs-progressbar" role="progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33.33333333333333" style="width: 33.3333%;"></div></div><div class="introjs-arrow" style="display: none;"></div><div class="introjs-tooltipbuttons"><a role="button" tabindex="0" class="introjs-button introjs-prevbutton introjs-disabled">Back</a><a role="button" tabindex="0" class="introjs-button introjs-nextbutton">Next</a></div></div></div></body>
+==================================================
+Element 18:
+<header class="o_navbar"><nav class="o_main_navbar" data-command-category="disabled"><div class="o-dropdown dropdown o_navbar_apps_menu o-dropdown--no-caret"><button type="button" class="dropdown-toggle" title="Home Menu" data-hotkey="h" tabindex="0" aria-expanded="false"><i class="oi oi-apps"></i></button></div><a class="dropdown-item o_menu_brand d-none d-md-flex" role="menuitem" tabindex="0" href="#menu_id=181&amp;action=370" data-menu-xmlid="stock.menu_stock_root" data-section="181">Inventory</a><div class="o_menu_sections d-none d-md-flex flex-grow-1 flex-shrink-1 w-0" role="menu"><a class="dropdown-item o_nav_entry" role="menuitem" tabindex="0" href="#menu_id=211&amp;action=370" data-hotkey="1" data-menu-xmlid="stock.stock_picking_type_menu" data-section="211">Overview</a><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="2" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_warehouse_mgmt"><span data-section="182">Operations</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="3" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_inventory_control"><span data-section="196">Products</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="4" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_warehouse_report"><span data-section="197">Reporting</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="5" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_config_settings"><span data-section="186">Configuration</span></button></div></div><div class="o_menu_systray d-flex flex-shrink-0 ms-auto" role="menu"><div></div><div class="dropdown"></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-comments" role="img" aria-label="Messages"></i><span class="o-mail-MessagingMenu-counter badge rounded-pill">2</span></button></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-clock-o" role="img" aria-label="Activities"></i></button></div><div></div><div></div><div><button class="o_mobile_menu_toggle o_nav_entry o-no-caret d-md-none border-0 pe-3" title="Toggle menu" aria-label="Toggle menu"><i class="oi oi-panel-right"></i></button></div><div></div><div class="o-dropdown dropdown o_user_menu d-none d-md-block pe-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle py-1 py-lg-0" tabindex="0" aria-expanded="false"><img class="o_avatar o_user_avatar rounded" alt="User" src="http://localhost:8070/web/image?model=res.users&amp;field=avatar_128&amp;id=2"><small class="oe_topbar_name d-none ms-2 text-start smaller lh-1 text-truncate" style="max-width: 200px">Administrator<mark class="d-block font-monospace text-truncate"><i class="fa fa-database oi-small me-1"></i>odoo17_db</mark></small></button></div></div></nav></header>
+==================================================
+Element 19:
+<nav class="o_main_navbar" data-command-category="disabled"><div class="o-dropdown dropdown o_navbar_apps_menu o-dropdown--no-caret"><button type="button" class="dropdown-toggle" title="Home Menu" data-hotkey="h" tabindex="0" aria-expanded="false"><i class="oi oi-apps"></i></button></div><a class="dropdown-item o_menu_brand d-none d-md-flex" role="menuitem" tabindex="0" href="#menu_id=181&amp;action=370" data-menu-xmlid="stock.menu_stock_root" data-section="181">Inventory</a><div class="o_menu_sections d-none d-md-flex flex-grow-1 flex-shrink-1 w-0" role="menu"><a class="dropdown-item o_nav_entry" role="menuitem" tabindex="0" href="#menu_id=211&amp;action=370" data-hotkey="1" data-menu-xmlid="stock.stock_picking_type_menu" data-section="211">Overview</a><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="2" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_warehouse_mgmt"><span data-section="182">Operations</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="3" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_inventory_control"><span data-section="196">Products</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="4" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_warehouse_report"><span data-section="197">Reporting</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="5" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_config_settings"><span data-section="186">Configuration</span></button></div></div><div class="o_menu_systray d-flex flex-shrink-0 ms-auto" role="menu"><div></div><div class="dropdown"></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-comments" role="img" aria-label="Messages"></i><span class="o-mail-MessagingMenu-counter badge rounded-pill">2</span></button></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-clock-o" role="img" aria-label="Activities"></i></button></div><div></div><div></div><div><button class="o_mobile_menu_toggle o_nav_entry o-no-caret d-md-none border-0 pe-3" title="Toggle menu" aria-label="Toggle menu"><i class="oi oi-panel-right"></i></button></div><div></div><div class="o-dropdown dropdown o_user_menu d-none d-md-block pe-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle py-1 py-lg-0" tabindex="0" aria-expanded="false"><img class="o_avatar o_user_avatar rounded" alt="User" src="http://localhost:8070/web/image?model=res.users&amp;field=avatar_128&amp;id=2"><small class="oe_topbar_name d-none ms-2 text-start smaller lh-1 text-truncate" style="max-width: 200px">Administrator<mark class="d-block font-monospace text-truncate"><i class="fa fa-database oi-small me-1"></i>odoo17_db</mark></small></button></div></div></nav>
+==================================================
+Element 20:
+<div class="o-dropdown dropdown o_navbar_apps_menu o-dropdown--no-caret"><button type="button" class="dropdown-toggle" title="Home Menu" data-hotkey="h" tabindex="0" aria-expanded="false"><i class="oi oi-apps"></i></button></div>
+==================================================
+Element 21:
+<button type="button" class="dropdown-toggle" title="Home Menu" data-hotkey="h" tabindex="0" aria-expanded="false"><i class="oi oi-apps"></i></button>
+==================================================
+Element 22:
+<i class="oi oi-apps"></i>
+==================================================
+Element 23:
+<a class="dropdown-item o_menu_brand d-none d-md-flex" role="menuitem" tabindex="0" href="#menu_id=181&amp;action=370" data-menu-xmlid="stock.menu_stock_root" data-section="181">Inventory</a>
+==================================================
+Element 24:
+<div class="o_menu_sections d-none d-md-flex flex-grow-1 flex-shrink-1 w-0" role="menu"><a class="dropdown-item o_nav_entry" role="menuitem" tabindex="0" href="#menu_id=211&amp;action=370" data-hotkey="1" data-menu-xmlid="stock.stock_picking_type_menu" data-section="211">Overview</a><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="2" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_warehouse_mgmt"><span data-section="182">Operations</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="3" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_inventory_control"><span data-section="196">Products</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="4" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_warehouse_report"><span data-section="197">Reporting</span></button></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="5" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_config_settings"><span data-section="186">Configuration</span></button></div></div>
+==================================================
+Element 25:
+<a class="dropdown-item o_nav_entry" role="menuitem" tabindex="0" href="#menu_id=211&amp;action=370" data-hotkey="1" data-menu-xmlid="stock.stock_picking_type_menu" data-section="211">Overview</a>
+==================================================
+Element 26:
+<div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="2" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_warehouse_mgmt"><span data-section="182">Operations</span></button></div>
+==================================================
+Element 27:
+<button type="button" class="dropdown-toggle" data-hotkey="2" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_warehouse_mgmt"><span data-section="182">Operations</span></button>
+==================================================
+Element 28:
+<span data-section="182">Operations</span>
+==================================================
+Element 29:
+<div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="3" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_inventory_control"><span data-section="196">Products</span></button></div>
+==================================================
+Element 30:
+<button type="button" class="dropdown-toggle" data-hotkey="3" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_inventory_control"><span data-section="196">Products</span></button>
+==================================================
+Element 31:
+<span data-section="196">Products</span>
+==================================================
+Element 32:
+<div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="4" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_warehouse_report"><span data-section="197">Reporting</span></button></div>
+==================================================
+Element 33:
+<button type="button" class="dropdown-toggle" data-hotkey="4" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_warehouse_report"><span data-section="197">Reporting</span></button>
+==================================================
+Element 34:
+<span data-section="197">Reporting</span>
+==================================================
+Element 35:
+<div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle" data-hotkey="5" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_config_settings"><span data-section="186">Configuration</span></button></div>
+==================================================
+Element 36:
+<button type="button" class="dropdown-toggle" data-hotkey="5" tabindex="0" aria-expanded="false" data-menu-xmlid="stock.menu_stock_config_settings"><span data-section="186">Configuration</span></button>
+==================================================
+Element 37:
+<span data-section="186">Configuration</span>
+==================================================
+Element 38:
+<div class="o_menu_systray d-flex flex-shrink-0 ms-auto" role="menu"><div></div><div class="dropdown"></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-comments" role="img" aria-label="Messages"></i><span class="o-mail-MessagingMenu-counter badge rounded-pill">2</span></button></div><div></div><div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-clock-o" role="img" aria-label="Activities"></i></button></div><div></div><div></div><div><button class="o_mobile_menu_toggle o_nav_entry o-no-caret d-md-none border-0 pe-3" title="Toggle menu" aria-label="Toggle menu"><i class="oi oi-panel-right"></i></button></div><div></div><div class="o-dropdown dropdown o_user_menu d-none d-md-block pe-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle py-1 py-lg-0" tabindex="0" aria-expanded="false"><img class="o_avatar o_user_avatar rounded" alt="User" src="http://localhost:8070/web/image?model=res.users&amp;field=avatar_128&amp;id=2"><small class="oe_topbar_name d-none ms-2 text-start smaller lh-1 text-truncate" style="max-width: 200px">Administrator<mark class="d-block font-monospace text-truncate"><i class="fa fa-database oi-small me-1"></i>odoo17_db</mark></small></button></div></div>
+==================================================
+Element 39:
+<div></div>
+==================================================
+Element 40:
+<div class="dropdown"></div>
+==================================================
+Element 41:
+<div></div>
+==================================================
+Element 42:
+<div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-comments" role="img" aria-label="Messages"></i><span class="o-mail-MessagingMenu-counter badge rounded-pill">2</span></button></div>
+==================================================
+Element 43:
+<button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-comments" role="img" aria-label="Messages"></i><span class="o-mail-MessagingMenu-counter badge rounded-pill">2</span></button>
+==================================================
+Element 44:
+<i class="fa fa-lg fa-comments" role="img" aria-label="Messages"></i>
+==================================================
+Element 45:
+<span class="o-mail-MessagingMenu-counter badge rounded-pill">2</span>
+==================================================
+Element 46:
+<div></div>
+==================================================
+Element 47:
+<div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret"><button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-clock-o" role="img" aria-label="Activities"></i></button></div>
+==================================================
+Element 48:
+<button type="button" class="dropdown-toggle" tabindex="0" aria-expanded="false"><i class="fa fa-lg fa-clock-o" role="img" aria-label="Activities"></i></button>
+==================================================
+Element 49:
+<i class="fa fa-lg fa-clock-o" role="img" aria-label="Activities"></i>
+==================================================
+Element 50:
+<div></div>
+==================================================
+Element 51:
+<div></div>
+==================================================
+Element 52:
+<div><button class="o_mobile_menu_toggle o_nav_entry o-no-caret d-md-none border-0 pe-3" title="Toggle menu" aria-label="Toggle menu"><i class="oi oi-panel-right"></i></button></div>
+==================================================
+Element 53:
+<button class="o_mobile_menu_toggle o_nav_entry o-no-caret d-md-none border-0 pe-3" title="Toggle menu" aria-label="Toggle menu"><i class="oi oi-panel-right"></i></button>
+==================================================
+Element 54:
+<i class="oi oi-panel-right"></i>
+==================================================
+Element 55:
+<div></div>
+==================================================
+Element 56:
+<div class="o-dropdown dropdown o_user_menu d-none d-md-block pe-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle py-1 py-lg-0" tabindex="0" aria-expanded="false"><img class="o_avatar o_user_avatar rounded" alt="User" src="http://localhost:8070/web/image?model=res.users&amp;field=avatar_128&amp;id=2"><small class="oe_topbar_name d-none ms-2 text-start smaller lh-1 text-truncate" style="max-width: 200px">Administrator<mark class="d-block font-monospace text-truncate"><i class="fa fa-database oi-small me-1"></i>odoo17_db</mark></small></button></div>
+==================================================
+Element 57:
+<button type="button" class="dropdown-toggle py-1 py-lg-0" tabindex="0" aria-expanded="false"><img class="o_avatar o_user_avatar rounded" alt="User" src="http://localhost:8070/web/image?model=res.users&amp;field=avatar_128&amp;id=2"><small class="oe_topbar_name d-none ms-2 text-start smaller lh-1 text-truncate" style="max-width: 200px">Administrator<mark class="d-block font-monospace text-truncate"><i class="fa fa-database oi-small me-1"></i>odoo17_db</mark></small></button>
+==================================================
+Element 58:
+<img class="o_avatar o_user_avatar rounded" alt="User" src="http://localhost:8070/web/image?model=res.users&amp;field=avatar_128&amp;id=2">
+==================================================
+Element 59:
+<small class="oe_topbar_name d-none ms-2 text-start smaller lh-1 text-truncate" style="max-width: 200px">Administrator<mark class="d-block font-monospace text-truncate"><i class="fa fa-database oi-small me-1"></i>odoo17_db</mark></small>
+==================================================
+Element 60:
+<mark class="d-block font-monospace text-truncate"><i class="fa fa-database oi-small me-1"></i>odoo17_db</mark>
+==================================================
+Element 61:
+<i class="fa fa-database oi-small me-1"></i>
+==================================================
+Element 62:
+<div class="o_action_manager"><div class="o_kanban_view o_kanban_dashboard o_emphasize_colors o_view_controller o_action"><div class="o_control_panel d-flex flex-column gap-3 gap-lg-1 px-3 pt-2 pb-3" data-command-category="actions"><div class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-lg-start gap-3 flex-grow-1"><div class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100"><div class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none"><div class="d-xl-none o_control_panel_collapsed_create"><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button><ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul></div><div class="d-none d-xl-inline-flex gap-1"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></div></div><div class="o_breadcrumb d-flex gap-1 text-truncate"><div class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"><span class="min-w-0 text-truncate">Inventory Overview</span></div><div class="o_control_panel_breadcrumbs_actions d-inline-flex"></div></div><span class="d-none d-xl-block me-auto"></span></div><div class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 mw-100 w-lg-auto"><div class="o_cp_searchview d-flex input-group" role="search"><div class="o_searchview form-control d-print-contents d-flex align-items-center py-1" role="search" aria-autocomplete="list"><i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i><div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button></div></div></div><div class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-3 gap-lg-1 gap-xl-3 order-1 order-lg-2 flex-grow-1"><div class="o_cp_pager text-nowrap " role="search"><nav class="o_pager d-flex gap-2 h-100" aria-label="Pager"><span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span><span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span></nav></div></div></div></div><div class="o_content"><div class="o_kanban_renderer o_renderer d-flex o_kanban_ungrouped align-content-start flex-wrap justify-content-start"><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_2" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_3" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div></div></div></div></div>
+==================================================
+Element 63:
+<div class="o_kanban_view o_kanban_dashboard o_emphasize_colors o_view_controller o_action"><div class="o_control_panel d-flex flex-column gap-3 gap-lg-1 px-3 pt-2 pb-3" data-command-category="actions"><div class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-lg-start gap-3 flex-grow-1"><div class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100"><div class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none"><div class="d-xl-none o_control_panel_collapsed_create"><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button><ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul></div><div class="d-none d-xl-inline-flex gap-1"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></div></div><div class="o_breadcrumb d-flex gap-1 text-truncate"><div class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"><span class="min-w-0 text-truncate">Inventory Overview</span></div><div class="o_control_panel_breadcrumbs_actions d-inline-flex"></div></div><span class="d-none d-xl-block me-auto"></span></div><div class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 mw-100 w-lg-auto"><div class="o_cp_searchview d-flex input-group" role="search"><div class="o_searchview form-control d-print-contents d-flex align-items-center py-1" role="search" aria-autocomplete="list"><i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i><div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button></div></div></div><div class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-3 gap-lg-1 gap-xl-3 order-1 order-lg-2 flex-grow-1"><div class="o_cp_pager text-nowrap " role="search"><nav class="o_pager d-flex gap-2 h-100" aria-label="Pager"><span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span><span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span></nav></div></div></div></div><div class="o_content"><div class="o_kanban_renderer o_renderer d-flex o_kanban_ungrouped align-content-start flex-wrap justify-content-start"><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_2" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_3" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div></div></div></div>
+==================================================
+Element 64:
+<div class="o_control_panel d-flex flex-column gap-3 gap-lg-1 px-3 pt-2 pb-3" data-command-category="actions"><div class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-lg-start gap-3 flex-grow-1"><div class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100"><div class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none"><div class="d-xl-none o_control_panel_collapsed_create"><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button><ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul></div><div class="d-none d-xl-inline-flex gap-1"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></div></div><div class="o_breadcrumb d-flex gap-1 text-truncate"><div class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"><span class="min-w-0 text-truncate">Inventory Overview</span></div><div class="o_control_panel_breadcrumbs_actions d-inline-flex"></div></div><span class="d-none d-xl-block me-auto"></span></div><div class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 mw-100 w-lg-auto"><div class="o_cp_searchview d-flex input-group" role="search"><div class="o_searchview form-control d-print-contents d-flex align-items-center py-1" role="search" aria-autocomplete="list"><i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i><div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button></div></div></div><div class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-3 gap-lg-1 gap-xl-3 order-1 order-lg-2 flex-grow-1"><div class="o_cp_pager text-nowrap " role="search"><nav class="o_pager d-flex gap-2 h-100" aria-label="Pager"><span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span><span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span></nav></div></div></div></div>
+==================================================
+Element 65:
+<div class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-lg-start gap-3 flex-grow-1"><div class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100"><div class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none"><div class="d-xl-none o_control_panel_collapsed_create"><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button><ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul></div><div class="d-none d-xl-inline-flex gap-1"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></div></div><div class="o_breadcrumb d-flex gap-1 text-truncate"><div class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"><span class="min-w-0 text-truncate">Inventory Overview</span></div><div class="o_control_panel_breadcrumbs_actions d-inline-flex"></div></div><span class="d-none d-xl-block me-auto"></span></div><div class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 mw-100 w-lg-auto"><div class="o_cp_searchview d-flex input-group" role="search"><div class="o_searchview form-control d-print-contents d-flex align-items-center py-1" role="search" aria-autocomplete="list"><i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i><div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button></div></div></div><div class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-3 gap-lg-1 gap-xl-3 order-1 order-lg-2 flex-grow-1"><div class="o_cp_pager text-nowrap " role="search"><nav class="o_pager d-flex gap-2 h-100" aria-label="Pager"><span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span><span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span></nav></div></div></div>
+==================================================
+Element 66:
+<div class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100"><div class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none"><div class="d-xl-none o_control_panel_collapsed_create"><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button><ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul></div><div class="d-none d-xl-inline-flex gap-1"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></div></div><div class="o_breadcrumb d-flex gap-1 text-truncate"><div class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"><span class="min-w-0 text-truncate">Inventory Overview</span></div><div class="o_control_panel_breadcrumbs_actions d-inline-flex"></div></div><span class="d-none d-xl-block me-auto"></span></div>
+==================================================
+Element 67:
+<div class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none"><div class="d-xl-none o_control_panel_collapsed_create"><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button><ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul></div><div class="d-none d-xl-inline-flex gap-1"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></div></div>
+==================================================
+Element 68:
+<div class="d-xl-none o_control_panel_collapsed_create"><button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button><ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul></div>
+==================================================
+Element 69:
+<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create d-none" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button>
+==================================================
+Element 70:
+<span class="visually-hidden">Toggle Dropdown</span>
+==================================================
+Element 71:
+<ul class="dropdown-menu o_control_panel_collapsed_create d-none"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></ul>
+==================================================
+Element 72:
+<div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div>
+==================================================
+Element 73:
+<div class="d-none d-xl-inline-flex gap-1"><div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div></div>
+==================================================
+Element 74:
+<div class="o_cp_buttons d-empty-none d-flex align-items-baseline gap-1" role="toolbar" aria-label="Main actions"></div>
+==================================================
+Element 75:
+<div class="o_breadcrumb d-flex gap-1 text-truncate"><div class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"><span class="min-w-0 text-truncate">Inventory Overview</span></div><div class="o_control_panel_breadcrumbs_actions d-inline-flex"></div></div>
+==================================================
+Element 76:
+<div class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"><span class="min-w-0 text-truncate">Inventory Overview</span></div>
+==================================================
+Element 77:
+<span class="min-w-0 text-truncate">Inventory Overview</span>
+==================================================
+Element 78:
+<div class="o_control_panel_breadcrumbs_actions d-inline-flex"></div>
+==================================================
+Element 79:
+<span class="d-none d-xl-block me-auto"></span>
+==================================================
+Element 80:
+<div class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 mw-100 w-lg-auto"><div class="o_cp_searchview d-flex input-group" role="search"><div class="o_searchview form-control d-print-contents d-flex align-items-center py-1" role="search" aria-autocomplete="list"><i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i><div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button></div></div></div>
+==================================================
+Element 81:
+<div class="o_cp_searchview d-flex input-group" role="search"><div class="o_searchview form-control d-print-contents d-flex align-items-center py-1" role="search" aria-autocomplete="list"><i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i><div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div></div><div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button></div></div>
+==================================================
+Element 82:
+<div class="o_searchview form-control d-print-contents d-flex align-items-center py-1" role="search" aria-autocomplete="list"><i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i><div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div></div>
+==================================================
+Element 83:
+<i class="o_searchview_icon d-print-none oi oi-search me-2" role="img" aria-label="Search..." title="Search..."></i>
+==================================================
+Element 84:
+<div class="o_searchview_input_container d-flex flex-grow-1 flex-wrap gap-1"><input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox"></div>
+==================================================
+Element 85:
+<input type="text" class="o_searchview_input o_input d-print-none flex-grow-1 w-auto border-0" accesskey="Q" placeholder="Search..." role="searchbox">
+==================================================
+Element 86:
+<div class="o-dropdown dropdown o-dropdown--no-caret"><button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button></div>
+==================================================
+Element 87:
+<button type="button" class="dropdown-toggle o_searchview_dropdown_toggler d-print-none btn btn-outline-secondary o-no-caret rounded-start-0 h-100" tabindex="0" aria-expanded="false"><i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i></button>
+==================================================
+Element 88:
+<i class="fa fa-caret-down" aria-hidden="true" data-hotkey="shift+q" title="Toggle Search Panel"></i>
+==================================================
+Element 89:
+<div class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-3 gap-lg-1 gap-xl-3 order-1 order-lg-2 flex-grow-1"><div class="o_cp_pager text-nowrap " role="search"><nav class="o_pager d-flex gap-2 h-100" aria-label="Pager"><span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span><span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span></nav></div></div>
+==================================================
+Element 90:
+<div class="o_cp_pager text-nowrap " role="search"><nav class="o_pager d-flex gap-2 h-100" aria-label="Pager"><span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span><span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span></nav></div>
+==================================================
+Element 91:
+<nav class="o_pager d-flex gap-2 h-100" aria-label="Pager"><span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span><span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span></nav>
+==================================================
+Element 92:
+<span class="o_pager_counter align-self-center"><span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span><span> / </span><span class="o_pager_limit">2</span></span>
+==================================================
+Element 93:
+<span class="o_pager_value d-inline-block border-bottom border-transparent mb-n1">1-2</span>
+==================================================
+Element 94:
+<span> / </span>
+==================================================
+Element 95:
+<span class="o_pager_limit">2</span>
+==================================================
+Element 96:
+<span class="btn-group d-print-none" aria-atomic="true"><button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button><button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button></span>
+==================================================
+Element 97:
+<button type="button" class="btn btn-secondary o_pager_previous px-2 rounded-start" aria-label="Previous" data-tooltip="Previous" tabindex="-1" data-hotkey="p" disabled=""><i class="oi oi-chevron-left"></i></button>
+==================================================
+Element 98:
+<i class="oi oi-chevron-left"></i>
+==================================================
+Element 99:
+<button type="button" class="btn btn-secondary o_pager_next px-2 rounded-end" aria-label="Next" data-tooltip="Next" tabindex="-1" data-hotkey="n" disabled=""><i class="oi oi-chevron-right"></i></button>
+==================================================
+Element 100:
+<i class="oi oi-chevron-right"></i>
+==================================================
+Element 101:
+<div class="o_content"><div class="o_kanban_renderer o_renderer d-flex o_kanban_ungrouped align-content-start flex-wrap justify-content-start"><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_2" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_3" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div></div></div>
+==================================================
+Element 102:
+<div class="o_kanban_renderer o_renderer d-flex o_kanban_ungrouped align-content-start flex-wrap justify-content-start"><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_2" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_3" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div><div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div></div>
+==================================================
+Element 103:
+<div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_2" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div>
+==================================================
+Element 104:
+<div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div>
+==================================================
+Element 105:
+<div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div></div>
+==================================================
+Element 106:
+<div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div><div class="o_secondary"></div></div>
+==================================================
+Element 107:
+<div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a></div>
+==================================================
+Element 108:
+<a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Receipts</span></a>
+==================================================
+Element 109:
+<span>Receipts</span>
+==================================================
+Element 110:
+<div class="o_secondary"></div>
+==================================================
+Element 111:
+<div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div>
+==================================================
+Element 112:
+<div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div>
+==================================================
+Element 113:
+<div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div>
+==================================================
+Element 114:
+<button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button>
+==================================================
+Element 115:
+<span>0 To Process</span>
+==================================================
+Element 116:
+<div class="col-6 o_kanban_primary_right"></div>
+==================================================
+Element 117:
+<div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div>
+==================================================
+Element 118:
+<button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button>
+==================================================
+Element 119:
+<span class="fa fa-ellipsis-v"></span>
+==================================================
+Element 120:
+<div role="article" class="o_kanban_record d-flex flex-grow-1 flex-md-shrink-1 flex-shrink-0" data-id="datapoint_3" tabindex="0"><div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div><div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div></div>
+==================================================
+Element 121:
+<div name="stock_picking" class="oe_kanban_color_0"><div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div></div><div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div></div>
+==================================================
+Element 122:
+<div class="o_kanban_card_header"><div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div></div>
+==================================================
+Element 123:
+<div class="o_kanban_card_header_title"><div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div><div class="o_secondary"></div></div>
+==================================================
+Element 124:
+<div class="o_primary"><a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a></div>
+==================================================
+Element 125:
+<a class="oe_kanban_action oe_kanban_action_a" name="get_stock_picking_action_picking_type" href="#" type="object"><span>Delivery Orders</span></a>
+==================================================
+Element 126:
+<span>Delivery Orders</span>
+==================================================
+Element 127:
+<div class="o_secondary"></div>
+==================================================
+Element 128:
+<div class="container o_kanban_card_content"><div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div></div>
+==================================================
+Element 129:
+<div class="row"><div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div><div class="col-6 o_kanban_primary_right"></div></div>
+==================================================
+Element 130:
+<div class="col-6 o_kanban_primary_left"><button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button></div>
+==================================================
+Element 131:
+<button class="btn btn-primary oe_kanban_action oe_kanban_action_button" name="get_action_picking_tree_ready" type="object"><span>0 To Process</span></button>
+==================================================
+Element 132:
+<span>0 To Process</span>
+==================================================
+Element 133:
+<div class="col-6 o_kanban_primary_right"></div>
+==================================================
+Element 134:
+<div class="o-dropdown dropdown o_dropdown_kanban bg-transparent position-absolute end-0 o-dropdown--no-caret"><button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button></div>
+==================================================
+Element 135:
+<button type="button" class="dropdown-toggle btn o-no-caret rounded-0" title="Dropdown menu" tabindex="0" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button>
+==================================================
+Element 136:
+<span class="fa fa-ellipsis-v"></span>
+==================================================
+Element 137:
+<div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div>
+==================================================
+Element 138:
+<div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div>
+==================================================
+Element 139:
+<div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div>
+==================================================
+Element 140:
+<div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div>
+==================================================
+Element 141:
+<div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div>
+==================================================
+Element 142:
+<div class="o_kanban_record o_kanban_ghost flex-grow-1 flex-md-shrink-1 flex-shrink-0 my-0"></div>
+==================================================
+Element 143:
+<div class="o-main-components-container"><div class="o-mail-ChatWindowContainer"></div><div class="o-overlay-container"></div><div></div><div class="o_notification_manager o_upload_progress_toast"></div><div class="o_notification_manager"></div></div>
+==================================================
+Element 144:
+<div class="o-mail-ChatWindowContainer"></div>
+==================================================
+Element 145:
+<div class="o-overlay-container"></div>
+==================================================
+Element 146:
+<div></div>
+==================================================
+Element 147:
+<div class="o_notification_manager o_upload_progress_toast"></div>
+==================================================
+Element 148:
+<div class="o_notification_manager"></div>
+==================================================
+Element 149:
+<div class="introjsFloatingElement introjs-showElement"></div>
+==================================================
+Element 150:
+<div class="introjs-overlay" style="inset: 0px; position: fixed; cursor: pointer;"></div>
+==================================================
+Element 151:
+<div class="introjs-helperLayer" style="box-shadow: rgba(33, 33, 33, 0.8) 0px 0px 1px 2px, rgba(33, 33, 33, 0.5) 0px 0px 0px 5000px; width: 0px; height: 0px; top: 360px; left: 640px; opacity: 1;"></div>
+==================================================
+Element 152:
+<div class="introjs-tooltipReferenceLayer" style="width: 0px; height: 0px; top: 360px; left: 640px;"><div class="introjs-tooltip introjs-floating" role="dialog" style="left: 50%; top: 50%; margin-left: -125px; margin-top: -104.5px;"><div class="introjs-tooltip-header"><h1 class="introjs-tooltip-title"></h1><a class="introjs-skipbutton" role="button" tabindex="0">×</a></div><div class="introjs-tooltiptext">Welcome to the Odoo Inventory page!</div><div class="introjs-bullets"><ul role="tablist"><li role="presentation"><a role="button" class="active" tabindex="0" data-stepnumber="1">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="2">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="3">&nbsp;</a></li></ul></div><div class="introjs-progress" style="display: none;"><div class="introjs-progressbar" role="progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33.33333333333333" style="width: 33.3333%;"></div></div><div class="introjs-arrow" style="display: none;"></div><div class="introjs-tooltipbuttons"><a role="button" tabindex="0" class="introjs-button introjs-prevbutton introjs-disabled">Back</a><a role="button" tabindex="0" class="introjs-button introjs-nextbutton">Next</a></div></div></div>
+==================================================
+Element 153:
+<div class="introjs-tooltip introjs-floating" role="dialog" style="left: 50%; top: 50%; margin-left: -125px; margin-top: -104.5px;"><div class="introjs-tooltip-header"><h1 class="introjs-tooltip-title"></h1><a class="introjs-skipbutton" role="button" tabindex="0">×</a></div><div class="introjs-tooltiptext">Welcome to the Odoo Inventory page!</div><div class="introjs-bullets"><ul role="tablist"><li role="presentation"><a role="button" class="active" tabindex="0" data-stepnumber="1">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="2">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="3">&nbsp;</a></li></ul></div><div class="introjs-progress" style="display: none;"><div class="introjs-progressbar" role="progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33.33333333333333" style="width: 33.3333%;"></div></div><div class="introjs-arrow" style="display: none;"></div><div class="introjs-tooltipbuttons"><a role="button" tabindex="0" class="introjs-button introjs-prevbutton introjs-disabled">Back</a><a role="button" tabindex="0" class="introjs-button introjs-nextbutton">Next</a></div></div>
+==================================================
+Element 154:
+<div class="introjs-tooltip-header"><h1 class="introjs-tooltip-title"></h1><a class="introjs-skipbutton" role="button" tabindex="0">×</a></div>
+==================================================
+Element 155:
+<h1 class="introjs-tooltip-title"></h1>
+==================================================
+Element 156:
+<a class="introjs-skipbutton" role="button" tabindex="0">×</a>
+==================================================
+Element 157:
+<div class="introjs-tooltiptext">Welcome to the Odoo Inventory page!</div>
+==================================================
+Element 158:
+<div class="introjs-bullets"><ul role="tablist"><li role="presentation"><a role="button" class="active" tabindex="0" data-stepnumber="1">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="2">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="3">&nbsp;</a></li></ul></div>
+==================================================
+Element 159:
+<ul role="tablist"><li role="presentation"><a role="button" class="active" tabindex="0" data-stepnumber="1">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="2">&nbsp;</a></li><li role="presentation"><a role="button" tabindex="0" data-stepnumber="3">&nbsp;</a></li></ul>
+==================================================
+Element 160:
+<li role="presentation"><a role="button" class="active" tabindex="0" data-stepnumber="1">&nbsp;</a></li>
+==================================================
+Element 161:
+<a role="button" class="active" tabindex="0" data-stepnumber="1">&nbsp;</a>
+==================================================
+Element 162:
+<li role="presentation"><a role="button" tabindex="0" data-stepnumber="2">&nbsp;</a></li>
+==================================================
+Element 163:
+<a role="button" tabindex="0" data-stepnumber="2">&nbsp;</a>
+==================================================
+Element 164:
+<li role="presentation"><a role="button" tabindex="0" data-stepnumber="3">&nbsp;</a></li>
+==================================================
+Element 165:
+<a role="button" tabindex="0" data-stepnumber="3">&nbsp;</a>
+==================================================
+Element 166:
+<div class="introjs-progress" style="display: none;"><div class="introjs-progressbar" role="progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33.33333333333333" style="width: 33.3333%;"></div></div>
+==================================================
+Element 167:
+<div class="introjs-progressbar" role="progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33.33333333333333" style="width: 33.3333%;"></div>
+==================================================
+Element 168:
+<div class="introjs-arrow" style="display: none;"></div>
+==================================================
+Element 169:
+<div class="introjs-tooltipbuttons"><a role="button" tabindex="0" class="introjs-button introjs-prevbutton introjs-disabled">Back</a><a role="button" tabindex="0" class="introjs-button introjs-nextbutton">Next</a></div>
+==================================================
+Element 170:
+<a role="button" tabindex="0" class="introjs-button introjs-prevbutton introjs-disabled">Back</a>
+==================================================
+Element 171:
+<a role="button" tabindex="0" class="introjs-button introjs-nextbutton">Next</a>
+==================================================

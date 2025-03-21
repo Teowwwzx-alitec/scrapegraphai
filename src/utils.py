@@ -4,7 +4,7 @@ from datetime import datetime
 def create_directories():
     """Create directories for storing artifacts"""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    base_dir = "captures"
+    base_dir = "output"
     dirs = {
         'screenshots': os.path.join(base_dir, timestamp, 'screenshots'),
         'structure': os.path.join(base_dir, timestamp, 'structure'),
