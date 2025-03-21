@@ -1,33 +1,30 @@
-import sys
-import os
-import json
-import asyncio
-import aiofiles
-from src.config import Config
-from src.auth.csrf import OdooSession
-from src.core.navigator import run_authenticated_navigator
-from src.core.analyzer import analyzer
-from src.scrapers.base_scraper import xpath_scraper
+from src.imports import *
 
 
-# Previously working asynchronous loader for menu selectors.
-async def load_menu_selectors(module_name):
-    file_path = os.path.join("odoo", "odoo17", module_name, "list_of_menu_selectors.json")
-    try:
-        async with aiofiles.open(file_path, "r", encoding="utf-8") as f:
-            content = await f.read()
-            return json.loads(content)
-    except (FileNotFoundError, json.JSONDecodeError):
-        return {"available": [], "done": []}
 
 async def main():
-    module_name = "Inventory"
-    # Create the base output directory.
-    base_output_dir = os.path.join("odoo", "odoo17", module_name)
-    os.makedirs(base_output_dir, exist_ok=True)
-    output_file = os.path.join(base_output_dir, "inventory_elements.txt")
+    modules = ["Inventory", "Stock", "Purchase", "Sale", "Account", "Hr", "Crm"]
+    
+    print("Available modules:")
+    for idx, module in enumerate(modules, start=1):
+        print(f"{idx}. {module}")
+    
+    user_input = input("Enter module number (e.g., 1 for 'Inventory') or type 'exit' to quit: ").strip().lower()
 
-    # Authenticate via requests.
+    if user_input == "exit":
+        print("Exiting the program.")
+        exit(0)
+    
+    try:
+        module_index = int(user_input) - 1
+        module_name = modules[module_index].strip()
+    except (ValueError, IndexError):
+        print("Invalid input. Please enter a valid module number.")
+        exit(1)
+
+
+    output_file = create_menu_selectors_dir(module_name)
+
     odoo = OdooSession()
     try:
         print("Starting authentication with requests...")
@@ -37,7 +34,6 @@ async def main():
         print(f"Authentication failed: {e}")
         sys.exit(1)
 
-    # Convert cookies for Playwright.
     playwright_cookies = odoo.get_cookies_for_playwright()
     print("Converted cookies for Playwright:", playwright_cookies)
 
@@ -47,6 +43,7 @@ async def main():
 
     # await run_introjs_test(page)
 
+    
     # Use XPath scraper to extract HTML elements.
     await xpath_scraper(page, output_file)
 
