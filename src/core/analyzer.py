@@ -1,19 +1,14 @@
-import aiofiles
-import json
-import requests
-from typing import List
-from src.config import Config
+from src.imports import *
 
 
-ANALYSIS_FILE = "odoo_analysis.md"
-
-async def analyzer(scraped_file: str):
+async def analyzer(scraped_file: str, module_name: str):
     """
     Read the scraped inventory elements file and send its content for analysis
     via OpenRouter + DeepseekR1 (dummy implementation for now).
     """
-    async with aiofiles.open(scraped_file, "r", encoding="utf-8") as f:
-        data = await f.read()
+    ANALYSIS_FILE = join_paths("odoo", "odoo17", module_name, "base", "odoo_analysis.md")
+    
+    data = await read_file(scraped_file)
     
     print("Analyzing scraped inventory elements using OpenRouter + DeepseekR1...")
 
@@ -27,7 +22,7 @@ async def analyzer(scraped_file: str):
     report = analyze_with_deepseek(elements)
     
     # Save the analysis report.
-    save_analysis(report, data)  # Update the function call to pass both parameters
+    save_analysis(report)
     
     return report
 
@@ -62,9 +57,16 @@ def analyze_with_deepseek(elements: List[str]) -> str:
         json=payload
     )
 
-    return response.json()["choices"][0]["message"]["content"]
+    try:
+        return response.json()["choices"][0]["message"]["content"]
+    except KeyError as e:
+        print(f"Error: Could not extract content from OpenRouter response. Response: {response.text}")
+        return f"Error: Could not extract content from OpenRouter response. Check the logs for more details. {e}"
+    except Exception as e:
+        print(f"Error: An unexpected error occurred while processing the OpenRouter response. Response: {response.text}")
+        return f"Error: An unexpected error occurred while processing the OpenRouter response. Check the logs for more details. {e}"
 
-def save_analysis(report: str, data: str):  # Update the function definition to accept both parameters
+def save_analysis(report: str):
     """Save analysis to markdown file"""
     with open(ANALYSIS_FILE, "w", encoding="utf-8") as f:
         f.write("# Odoo Structure Analysis\n\n")
@@ -73,7 +75,6 @@ def save_analysis(report: str, data: str):  # Update the function definition to 
 
     analysis_result = {
         "analysis": "dummy analysis result based on scraped inventory elements",
-        "element_count": len(data)
     }
     print("Analysis result:", json.dumps(analysis_result, indent=2))
     return analysis_result

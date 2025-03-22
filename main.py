@@ -1,6 +1,9 @@
 from src.imports import *
 
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 async def main():
     modules = ["Inventory", "Stock", "Purchase", "Sale", "Account", "Hr", "Crm"]
@@ -23,32 +26,42 @@ async def main():
         exit(1)
 
 
-    output_file = create_menu_selectors_dir(module_name)
+    output_file = await manage_menu_selectors(module_name, "create")
 
     odoo = OdooSession()
     try:
         print("Starting authentication with requests...")
-        odoo.authenticate()
+        await odoo.authenticate()
         print("Requests authentication successful!")
     except Exception as e:
         print(f"Authentication failed: {e}")
         sys.exit(1)
+
 
     playwright_cookies = odoo.get_cookies_for_playwright()
     print("Converted cookies for Playwright:", playwright_cookies)
 
     # Run navigator to open the authenticated page.
     # Now unpacking four values: page, context, browser, and p (the Playwright instance)
-    page, context, browser, p = await run_authenticated_navigator(module_name, playwright_cookies)
+    navigator_result = await navigate_to_module(module_name, playwright_cookies)
 
-    # await run_introjs_test(page)
+    if navigator_result is None:
+        print("Navigation failed. Skipping scraping and analysis.")
+        return
 
-    
+    page, context, browser, p = navigator_result
+
+    # Check if the output file already exists
+    if check_file_exists(output_file):
+        print(f"Output file {output_file} already exists. Skipping scraping.")
+        return
+        
+        
     # Use XPath scraper to extract HTML elements.
     await xpath_scraper(page, output_file)
 
     # Analyze the scraped inventory elements using OpenRouter + DeepseekR1.
-    await analyzer(output_file)
+    await analyzer(output_file, module_name)
 
     # Cleanup: close context, browser, and stop Playwright.
     try:

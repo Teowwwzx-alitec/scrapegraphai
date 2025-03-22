@@ -1,7 +1,5 @@
-# src/config.py
+from src.imports import *
 
-import os
-from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -20,10 +18,19 @@ class Config:
     PLAYWRIGHT_TIMEOUT = 30000
     
     # Odoo credentials
-    ODOO_LOCAL_URL = "http://localhost:8070"
-    ODOO_USERNAME = "zhenxiang.teow@alitec.asia"
-    ODOO_PASSWORD = "123123123"
+    # ODOO_LOCAL_URL = "http://localhost:8070"
+    # ODOO_LOCAL_USERNAME = "zhenxiang.teow@alitec.asia"
+    # ODOO_LOCAL_PASSWORD = "123123123"
+
+    ODOO_LOCAL_URL = "https://logintest.steps.sg/"
+    ODOO_USERNAME = "admin"
+    ODOO_PASSWORD = "admin"
     
+    # ODOO_SERVER_URL = "https://logintest.steps.sg/"
+    # ODOO_SERVER_USERNAME = "zhenxiang.teow@alitec.asia"
+    # ODOO_SERVER_PASSWORD = "123123123"
+
+
     @staticmethod
     def debug_print(message):
         if Config.DEBUG:
