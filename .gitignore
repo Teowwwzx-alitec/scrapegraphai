@@ -27,6 +27,8 @@ trash/
 **/screenshots/
 **/recordings/
 **/structure/
+data/
+odoo_docs_by_category/
 
 # IDE
 .idea/

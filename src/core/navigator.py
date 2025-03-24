@@ -57,13 +57,29 @@ async def navigate_to_module(module_name: str, playwright_cookies: list):
                 print(f"Module {module_name} not found")
                 return page, context, browser, p
 
-            await page.goto(module_name, wait_until="load", timeout=10000)
+            # Enterprise modules should have appropriate URLs constructed
+            module_url = join_paths(Config.ODOO_LOCAL_URL, "web", f"#{module_name}")
+            await page.goto(module_url, wait_until="load", timeout=10000)
             print(f"Navigated to {module_name} using direct URL (Enterprise version).")
 
     except Exception as e:
         print(f"Error navigating to module {module_name}: {e}")
+        # Clean up resources before returning None
+        try:
+            await context.close()
+        except Exception as ce:
+            print(f"Error closing context: {ce}")
+        try:
+            await browser.close()
+        except Exception as be:
+            print(f"Error closing browser: {be}")
+        try:
+            await p.stop()
+        except Exception as pe:
+            print(f"Error stopping playwright: {pe}")
         return None
         
+
     # Return page, context, browser, and the Playwright instance so they can be closed later.
     return page, context, browser, p
 

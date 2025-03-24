@@ -6,6 +6,7 @@ import aiofiles
 import logging
 import requests
 import datetime
+import playwright
 
 from dotenv import load_dotenv
 from typing import List
@@ -19,6 +20,5 @@ from datetime import datetime
 from src.config import Config
 from src.utils import *
 from src.auth.csrf import *
-from src.core.navigator import *
 from src.core.analyzer import *
 from src.scrapers.base_scraper import *

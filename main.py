@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore", message="unclosed", category=ResourceWarning)
+
 from src.imports import *
 
 
@@ -6,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 async def main():
+    # Step 1
     modules = ["Inventory", "Stock", "Purchase", "Sale", "Account", "Hr", "Crm"]
     
     print("Available modules:")
@@ -26,8 +30,11 @@ async def main():
         exit(1)
 
 
+    # Step 2 - Check is menu_selectors exist
     output_file = await manage_menu_selectors(module_name, "create")
 
+
+    # Step 3 - Authenticate and pass CSSRF token to playwright
     odoo = OdooSession()
     try:
         print("Starting authentication with requests...")
@@ -36,13 +43,11 @@ async def main():
     except Exception as e:
         print(f"Authentication failed: {e}")
         sys.exit(1)
-
-
     playwright_cookies = odoo.get_cookies_for_playwright()
     print("Converted cookies for Playwright:", playwright_cookies)
 
-    # Run navigator to open the authenticated page.
-    # Now unpacking four values: page, context, browser, and p (the Playwright instance)
+
+    # Step 4 - Navigate the browser to the right module
     navigator_result = await navigate_to_module(module_name, playwright_cookies)
 
     if navigator_result is None:
@@ -51,7 +56,8 @@ async def main():
 
     page, context, browser, p = navigator_result
 
-    # Check if the output file already exists
+
+    # Step 5 - Check is the 
     if check_file_exists(output_file):
         print(f"Output file {output_file} already exists. Skipping scraping.")
         return
@@ -60,8 +66,10 @@ async def main():
     # Use XPath scraper to extract HTML elements.
     await xpath_scraper(page, output_file)
 
+
     # Analyze the scraped inventory elements using OpenRouter + DeepseekR1.
     await analyzer(output_file, module_name)
+
 
     # Cleanup: close context, browser, and stop Playwright.
     try:
@@ -79,4 +87,17 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import asyncio
+
+    print("Choose a mode:")
+    print("1. Scrape and Analyze")
+    print("2. Analyze Only")
+
+    choice = input("Enter mode number (1 or 2): ")
+
+    if choice == "1":
+        asyncio.run(batch_scraper())
+    elif choice == "2":
+        asyncio.run(batch_analyzer())
+    else:
+        print("Invalid choice.")
